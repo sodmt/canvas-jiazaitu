@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    canvas{
+        border:1px solid gold;
+    }
+</style>
+<body>
+    <canvas width="300" height="300"></canvas>
+</body>
+</html>
+<script>
+    let canvas = document.querySelector('canvas'),
+        t = setInterval(move,100),
+        num = 1;
+        PI = Math.PI;
+    ctx = canvas.getContext('2d');
+
+    function move(){
+        ctx.beginPath();   //开始
+
+        ctx.arc(150,150,100,0,2*PI/100*num); //创建圆
+
+        ctx.strokeStyle = 'gold';   //圆的颜色
+
+        ctx.clearRect(0, 0, 300,400 );    //画布清空
+
+        ctx.stroke();       //描边
+
+        ctx.closePath();     //关闭
+
+        ctx.font = "30px Calibri";   // 字体大小
+
+        ctx.fillText(num + '%', 125, 150);     // 字体内容及位置
+        num++;          // 自增
+
+        if(num > 100){                 //如果大于100时，停止时间函数
+            clearInterval(t);
+        }
+    }
+</script>
